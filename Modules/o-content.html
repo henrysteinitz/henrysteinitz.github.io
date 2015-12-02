@@ -1,0 +1,50 @@
+<!-- Henry Steinitz 2015-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="o-outline.html">
+<link rel="import" href="h-tabs.html">
+
+<dom-module id="o-content">
+	<style>
+	#outer-container{
+		display: block;
+		padding: 20px;
+		width: calc(100% - 40px);
+		float: left;
+		vertical-align:top;
+		text-align: center;
+		margin-top: -210px;
+	}
+	#outline-container{
+		float: none;
+		position: relative;
+		display: inline-block;
+		width: 320px;
+		height: 100%;
+		vertical-align:top;
+	}
+	#page-container{
+		float: none;
+		position: relative;
+		display: inline-block;
+		width: calc(100% - 20px);
+		max-width: 700px;
+		vertical-align:top;
+	}
+  	</style>
+	<template>
+		
+		<div id ="outer-container">
+			<div id="page-container">
+				<o-article></o-article>
+			</div>
+		</div>
+	</template>
+
+	<script>
+	Polymer({
+	  is: "o-content"
+	});
+	</script>
+
+</dom-module>

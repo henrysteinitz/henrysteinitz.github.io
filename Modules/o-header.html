@@ -1,0 +1,165 @@
+<!-- Henry Steinitz 2015-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="o-header">
+  	<style>
+      #container{
+        z-index: 1;
+        position: absolute;
+        top:260px;
+        width: 100%;
+      }
+      #title{
+        z-index: 1;
+        font: 70pt "Helvetica neue";
+        color:white;
+        font-weight: 100;
+        width: 100%;
+        text-align: center;
+      }
+      #subtitle{
+        z-index: 1;
+        font: 15pt "Helvetica neue";
+        color:white;
+        font-weight: 100;
+        width: 100%;
+        text-align: center;
+      }
+      .anim{
+        margin-bottom:0px;
+        background: rgba(255,255,255,0);
+        width: 30px;
+        height:60px;
+      }
+
+      
+  	</style>
+	<template>
+		<div id = "container">
+
+			<div id = "title">Henry Steinitz
+      <canvas id = "anim1" width="30" height="60" class="anim"></canvas>
+      </div>
+      <div id = "subtitle">
+      Aspiring AI Researcher
+      </div>
+		</div>
+	</template>
+
+	<script>
+	Polymer({
+	  is: "o-header",
+    ready:function(){
+
+        var lasttime = Date.now();
+
+        //starting bar velocities
+        var v1 = 20;
+        var v2 = 24;
+        var v3 = 30;
+
+        //canvas height
+        var h = 60;
+
+        //min bar height
+        var min = 0;
+
+        //starting bar heights
+        var h1 = min;
+        var h2 = min;
+        var h3 = min;
+
+
+
+          function animate() {
+             
+             reqAnimFrame = window.mozRequestAnimationFrame    ||
+                 window.webkitRequestAnimationFrame ||
+                 window.msRequestAnimationFrame     ||
+                 window.oRequestAnimationFrame;
+            
+            lasttime = draw(lasttime);
+            reqAnimFrame(animate);
+            
+          }
+          function draw(lasttime) {
+            var now = Date.now();
+            var dt = (now-lasttime)/1000
+            var canvas  = document.getElementById("anim1");
+            var scale = window.devicePixelRatio;
+            canvas.width = 30*scale;
+            canvas.height = h*scale;
+            canvas.getContext('2d').scale(2,2);
+            var context = canvas.getContext("2d");
+
+
+            //update heights
+            h1 = h1+ v1*dt;
+            h2 = h2+ v2*dt;
+            h3 = h3+ v3*dt;
+
+            if(h1>h){
+              h1 = h;
+              v1 = - Math.abs(v1);
+            }
+            if(h2>h){
+              h2 = h;
+              v2 = - Math.abs(v2);
+            }
+            if(h3>h){
+              h3 = h;
+              v3 = - Math.abs(v3);
+            }
+            if(h1<min){
+              h1 = min;
+              v1 = Math.abs(v1);
+            }
+            if(h2<min){
+              h2 = min;
+              v2 = Math.abs(v2);
+            }
+            if(h3<min){
+              h3 = min;
+              v3 = Math.abs(v3);
+            }
+
+            
+
+            context.width = 30;
+            context.height = h;
+            context.fillStyle = "#ffffff";
+            context.fillRect(0, h, 2, -h1);
+            context.fillRect(11, h, 2, -h2);
+            context.fillRect(22, h, 2, -h3);
+            return now;
+
+          }
+
+          animate();
+
+          //Upward Translation Animation
+          var height2 = 0;
+          var alpha = 1;
+          var disaheight = 200.0
+          var pic = this.$.container;
+          addEventListener('scroll', function (event) {
+              height = window.scrollY;
+              alpha = height / disaheight;
+              if(alpha > 1){
+                alpha = 0;
+              }
+              else{
+                alpha = 1 - alpha;
+              }
+              height2 =  (height / 4);
+
+              pic.style.marginTop = "-" + height2 + "px";
+              pic.style.opacity = alpha +"";
+          });
+    }
+	});
+	</script>
+
+</dom-module>

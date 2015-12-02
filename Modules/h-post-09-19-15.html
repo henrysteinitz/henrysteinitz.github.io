@@ -1,0 +1,215 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="h-post-09-19-15">
+<style>
+	#container{
+		height: auto;
+	}
+	.block{
+		font: 17px "Helvetica neue";
+		margin: 0 auto;
+		max-width: 700px;
+		padding: 0px;
+		overflow: hidden;
+		border-right: 0px solid rgba(0,0,0,.9);
+		border-left: 0px solid rgba(0,0,0,.9);
+		padding-top: 0px;
+		padding-bottom:20px;
+		padding-left: 40px;
+		padding-right: 40px;
+		text-align: center;
+		height:auto;
+	}
+	.block p{
+		text-align: left;
+		letter-spacing: 0px;
+		line-height: 145%;
+	}
+	.block span {
+    	float: left;
+	    width: 0.7em;
+	    font-size: 320%;
+	    font-weight: 200;
+	    line-height: 97%;
+	    margin-bottom: -5px;
+	}
+	#title-container{
+		width: 100%;
+		text-align: left;
+	}
+	#section-title{
+		font: 32px "Helvetica neue";
+		text-align: left;
+		display: inline-block;
+		font-weight: 200;
+	}
+	#section-date{
+		font: 32px "Helvetica neue";
+		color:rgb(150,150,150);
+		font-weight: 200;
+		text-align: left;
+		display: inline-block;
+		margin-right: 5px;
+	}
+	.tech{
+		vertical-align: top;
+		display: inline-block;
+	}
+	.block h2{
+		font: 17px "Helvetica neue";
+		margin-top: 8px;
+		margin-bottom:0px;
+		letter-spacing: 0px;
+	}
+	.final-space{
+		width: 100%;
+		height:8px;
+	}
+	.page{
+		margin:0;
+		margin-top: 20px;
+		width: 100%;
+		height: 100%;
+		background: white;
+		z-index: 999;
+	}
+	.mid{
+
+		display: inline-block;
+		width: auto;
+	}
+	.block{
+		display: block;
+	}
+	#cable1{
+		margin-top: -100px;
+		margin-right: calc(50%);
+	}
+	#cable2{
+		margin-top: -40px;
+		margin-left: calc(50%);
+	}
+	#node1{
+		margin-top: -30px;
+		margin-left: calc(50% - 123px);
+	}
+	#node2{
+		margin-top: -30px;
+		margin-left: calc(50% + 30px);
+	}
+	#node3{
+		margin-top: -144px;
+	}
+	#space{
+		margin-top: 140px;
+	}
+	#val_table{
+		display: inline-block;
+		border-style: solid;
+		border: 1px;
+		border-collapse: collapse;
+	}
+	#bar{
+		width: 100%;
+		height: 1px;
+		background: black;
+		display: block;
+		margin-top: 0px;
+		margin-bottom:0px;	}
+</style>
+<template>
+	<div class = "block" id = container>
+		<!--11/19-->
+		<div id="title-container">
+		<div id= "section-date">
+		9/19
+		</div>
+		<div id ="section-title">
+		Cables and Abstract Networks
+		</div>
+		<div class ="tech">
+		t
+		</div>
+		</div>
+
+		<div id="bar"></div>
+		
+		<div id = "content">
+		<p><span>U</span>sually we imagine that functions map elements from domains to ranges instantaeously. However, there are lots of times where we want to understand the behavior of complicated networks of functions that take time to process their input (recurrent neural networks, for example). I figured it'd be fun to make some definitions that capture this concept and play with them a bit. As a disclaimer, I'm sure a lot of people have done serious work on this subject and have developed a formalism more useful than the one I'm about to introduce. But w/e. Let's do this. </p> 
+		<p> Let <img src="http://latex.codecogs.com/svg.latex?A" border="0"/> be a set. Then, a cable is a pair <img src="http://latex.codecogs.com/svg.latex?(f,t)" border="0"/> where <img src="http://latex.codecogs.com/svg.latex?f: A \rightarrow A" > and <img src="http://latex.codecogs.com/svg.latex?t \in \mathbb{Z}^+">. We'll compactly denote this cable as <img src="http://latex.codecogs.com/svg.latex?f^t"> and call <img src="http://latex.codecogs.com/svg.latex?t"> the cable's letency. This is how long our function will take to produce an output. (I might consider cables with real-valued networks later on, but it makes defining computations on infinite networks way more tedious.) Now suppose we have an associative and commutative binary relation <img src="http://latex.codecogs.com/svg.latex?+"> on <img src="http://latex.codecogs.com/svg.latex?A">. We define an abstract network <img src="http://latex.codecogs.com/svg.latex?N"> to be directed graph where each node has a finite number of incoming edges and each edge <img src="http://latex.codecogs.com/svg.latex?e"> has an associated cable <img src="http://latex.codecogs.com/svg.latex?f^t_e">. Every cable must have the same domain <img src="http://latex.codecogs.com/svg.latex?A">, which we'll call the domain of the network. We're imagining each edge is really a cable connecting two nodes, so we'll intentionally convolute the two. </p>
+		<p>Ok. So how do our networks compute? We'll initialize each node <img src="http://latex.codecogs.com/svg.latex?n"> to be some particular value <img src="http://latex.codecogs.com/svg.latex?v_t(n)"> in <img src="http://latex.codecogs.com/svg.latex?A"> for all <img src="http://latex.codecogs.com/svg.latex?t \leq 0">. Let <img src="http://latex.codecogs.com/svg.latex?f^{t_1}_{e_1}, \dots, f^{t_k}_{e_k}"> be the cables of <img src="http://latex.codecogs.com/svg.latex?N"> that point to <img src="http://latex.codecogs.com/svg.latex?n">. Then, for all <img src="http://latex.codecogs.com/svg.latex?t>0">, let </p>
+		<img class="mid" src="http://latex.codecogs.com/svg.latex?v_t(n) = f_{e_1}(v_{t-t_1}(n)) + \dots + f_{e_k}(v_{t-t_k}(n)).">
+		<p>The formal stuff really obscures the idea, so let's look at an example. We'll take our domain to be <img src="http://latex.codecogs.com/svg.latex?\mathbb{Z}" > and use addition as our binary operation. From now on, we'll denote the function that takes <img src="http://latex.codecogs.com/svg.latex?x" > to some expression <img src="http://latex.codecogs.com/svg.latex?e(x)" > as <img src="http://latex.codecogs.com/svg.latex?[e(x)]">. For example, the function <img src="http://latex.codecogs.com/svg.latex?x \mapsto x+1" > will be denoted <img src="http://latex.codecogs.com/svg.latex?[x+1]">. With this in mind, consider the following network: </p>
+		<img width = "200" src="../Images/network_example_1.tiff"> 
+
+		<img class= "block" id="cable1" src="http://latex.codecogs.com/svg.latex?[x+1]^1">
+		<img class= "block" id="cable2" src="http://latex.codecogs.com/svg.latex?[x-2]^1">
+		<img class= "block" id="cable3" src="http://latex.codecogs.com/svg.latex?[2x]^1">
+		<img class= "block" id="node1" src="http://latex.codecogs.com/svg.latex?a">
+		<img class= "block" id="node2" src="http://latex.codecogs.com/svg.latex?c">
+		<img class= "block" id="node3" src="http://latex.codecogs.com/svg.latex?b">
+		<div id="space"></div>
+		<p>The numbers on each node are our initial values. So the first few steps of this network's computation are represented in the following table:</p>
+		<table id = "val_table" border="1">
+		<tr>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?t"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?v_t(a)"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?v_t(b)"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?v_t(c)"></td>
+		</tr>
+		<tr>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?0"<tr>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?1"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?2"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?0"></td>
+		</tr>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?1"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?0"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?2"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?0"></td>
+		</tr>
+		<tr>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?2"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?0"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?1"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?0"></td>
+		</tr>
+		<tr>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?3"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?0"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?1"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?-1"></td>
+		</tr>
+		<tr>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?4"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?-2"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?1"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?-1"></td>
+		</tr>
+		<tr>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?5"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?-2"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?-1"></td>
+		<td><img class= "block" src="http://latex.codecogs.com/svg.latex?-1"></td>
+		</tr>
+
+		</table>
+		<p> This particular initialization makes it seem like nodes in our network "hold" their value for 3 units of time. However, this is not inherent to the network's structure. It's easy to find an initializtion where this doesn't happen. Our computation is actually 3 concurrent computations which never interact with each other. In a couple days, we'll discuss a few methods for analyzing the flow of information through an abstract network.</p>
+		</div>
+		<div id="bar"></div>
+	</div>
+
+</template>
+
+<script>
+	Polymer({
+	  is: "h-post-09-19-15",
+	  ready:function(){
+	  	var content = this.$.content;
+	  	//content.style.height = "500px";
+	  }
+	});
+</script>
+
+</dom-module>

@@ -1,0 +1,65 @@
+<link rel="import"
+      href="../bower_components/polymer/polymer.html">
+
+<dom-module id="o-outline">
+	<style>
+	#container_out {
+		display: block;
+		width: calc(100% - 60px);
+		margin-top: 0px;
+		margin-left: 0px;
+		padding: 20px;
+		border-radius: 3px;
+		background: white;
+		height: 300px;
+		color: black;
+		font: 20px "helvetica neue";
+		font-weight: 200;
+		
+	}
+  	</style>
+	<template>
+		<div id ="container_out">
+		</div>
+	</template>
+
+	<script>
+	Polymer({
+		is: "o-outline",
+		ready: function(){
+			
+			//var container = this.$.container_out;
+			var t = 0;
+			var el = container;
+			while (el.offsetParent) { 
+				t += el.offsetTop; 
+				el = el.offsetParent; 
+			} 
+			var height = t -  window.scrollY;
+			
+			addEventListener('scroll', function (event) {
+
+				//var container = this.$.container_out;
+				//var width = container.cientWidth;
+				while (el.offsetParent) { 
+					t += el.offsetTop; 
+					el = el.offsetParent; 
+				} 
+				height = t -  window.scrollY;
+				//alert(height);
+				if (height <= 0){
+					//container.style.width = width + "px";
+					container.style.position = "fixed";
+					container.style.top = "0";
+					
+				}
+			});
+		}
+	});
+
+				
+			
+	</script>
+
+
+</dom-module>
