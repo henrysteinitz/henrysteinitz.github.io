@@ -1,10 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href = "o-panel.html">
-<link rel="import" href = "h-post-09-19-15.html">
-<link rel="import" href = "h-post-12-14-15.html">
 
-<dom-module id="o-article">
+
+<dom-module id="h-post-12-14-15">
 <style>
+	#container{
+		height: auto;
+	}
 	.block{
 		font: 17px "Helvetica neue";
 		margin: 0 auto;
@@ -18,6 +19,7 @@
 		padding-left: 40px;
 		padding-right: 40px;
 		text-align: center;
+		height:auto;
 	}
 	.block p{
 		text-align: left;
@@ -40,10 +42,12 @@
 		font: 32px "Helvetica neue";
 		text-align: left;
 		display: inline-block;
+		font-weight: 200;
 	}
 	#section-date{
 		font: 32px "Helvetica neue";
 		color:rgb(150,150,150);
+		font-weight: 200;
 		text-align: left;
 		display: inline-block;
 		margin-right: 5px;
@@ -106,16 +110,48 @@
 		border: 1px;
 		border-collapse: collapse;
 	}
-	</style>
-	<template>
-	<div class = "page">
-	<h-post-12-14-15></h-post-12-14-15>
-	<h-post-09-19-15></h-post-09-19-15>	
+	#bar{
+		width: 100%;
+		height: 1px;
+		background: black;
+		display: block;
+		margin-top: 0px;
+		margin-bottom:0px;	}
+	.space{
+		height:20px;
+		width: 100%;
+	}
+</style>
+<template>
+	<div class = "block" id = container>
+		<!--11/19-->
+		<div id="title-container">
+		<div id= "section-date">
+		12/14
+		</div>
+		<div id ="section-title">
+		A Song
+		</div>
+		</div>
+
+		<div id="bar"></div>
+		<div class="space"></div>
+		
+		<div id = "content">
+		<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/227715880&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+		</div>
 	</div>
-	</template>
-	<script>
+
+</template>
+
+<script>
 	Polymer({
-	  is: "o-article"
+	  is: "h-post-12-14-15",
+	  ready:function(){
+	  	var content = this.$.content;
+	  	//content.style.height = "500px";
+	  }
 	});
-	</script>
+</script>
+
 </dom-module>

@@ -1,0 +1,12 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="9-19-15">
+
+<script>
+	Polymer({
+	  is: "o-panel"
+	});
+</script>
+
+</dom-module>
