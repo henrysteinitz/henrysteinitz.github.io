@@ -118,7 +118,8 @@
 		margin-top: 0px;
 		margin-bottom:0px;	}
 	.picture {
-		width: 50%;
+		width: 60%;
+		min-width: 350px;
 	}
 
 </style>
@@ -141,7 +142,7 @@
 		
 		<div id = "content">
 		<p><span>L</span>ast time, I claimed that my example network really defined three independent processes. Let's look at this network again:</p>
-		<img class="picture" src="../Images/net_examp.png">
+		<img class="picture" src="../Images/network_example.png">
 		<p>When I say that this network consists of three distinct, independent computations, I mean that node <img src="http://latex.codecogs.com/svg.latex?a"> at time <img src="http://latex.codecogs.com/svg.latex?t=2"> doesn't care about the value of node <img src="http://latex.codecogs.com/svg.latex?b"> at time <img src="http://latex.codecogs.com/svg.latex?t=1">. In fact, changing node <img src="http://latex.codecogs.com/svg.latex?b"> at time <img src="http://latex.codecogs.com/svg.latex?t=1"> has no effect on two thirds of the network's values moving forward. To make this clearer, we'll introduce a directed graph that depends on the network's topology and temporal structure called the time expansion of an abstract network N.</p>
 		<p> The set of nodes in the time expansion is <img src="http://latex.codecogs.com/svg.latex?N' \times \mathbb{Z}">, where <img src="http://latex.codecogs.com/svg.latex?N'"> is the set of nodes in <img src="http://latex.codecogs.com/svg.latex?N"> (excuse the sloppy notation). Then, there is an edge from <img src="http://latex.codecogs.com/svg.latex?(n,i)"> to <img src="http://latex.codecogs.com/svg.latex?(m,i+t)"> if there exists a cable from <img src="http://latex.codecogs.com/svg.latex?n"> to <img src="http://latex.codecogs.com/svg.latex?m"> with latency <img src="http://latex.codecogs.com/svg.latex?t">. Here's the time expansion for the network we looked at last time:
 		</p>
