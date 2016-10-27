@@ -251,11 +251,11 @@ class Perceptron {
     if (l === 0){
       for (let j = 0; j < this.neuronCenters[0].length; j++){
         const line = new createjs.Shape();
-        line.graphics.beginStroke("#000000");
+        line.graphics.beginStroke("#9999ff");
         line.graphics.moveTo(this.neuronCenters[0][j][0] - this.radius - this.ioLength, this.neuronCenters[0][j][1]);
         const cmd = line.graphics.lineTo(this.neuronCenters[0][j][0] - this.radius - this.ioLength, this.neuronCenters[0][j][1]).command;
         line.graphics.endStroke();
-        createjs.Tween.get(cmd).to({x:this.neuronCenters[0][j][0] - this.radius}, 1400).call(
+        createjs.Tween.get(cmd).to({x:this.neuronCenters[0][j][0] - this.radius}, 800).call(
           this.renderActivations.bind(this,l+1)
         );
         this.stage.addChild(line);
@@ -264,11 +264,11 @@ class Perceptron {
     } else if (l === this.layers.length){
       for (let j = 0; j < this.neuronCenters[l - 1].length; j++){
         const line = new createjs.Shape();
-        line.graphics.beginStroke("#000000");
+        line.graphics.beginStroke("#9999ff");
         line.graphics.moveTo(this.neuronCenters[l - 1][j][0] + this.radius, this.neuronCenters[l - 1][j][1]);
         const cmd = line.graphics.lineTo(this.neuronCenters[l - 1][j][0] + this.radius, this.neuronCenters[l - 1][j][1]).command;
         line.graphics.endStroke();
-        createjs.Tween.get(cmd).to({x:this.neuronCenters[l - 1][j][0] + this.radius + this.ioLength}, 1400);
+        createjs.Tween.get(cmd).to({x:this.neuronCenters[l - 1][j][0] + this.radius + this.ioLength}, 800);
         this.stage.addChild(line);
         this.activationLines.push(line);
       }
@@ -283,7 +283,7 @@ class Perceptron {
           } else {
             neg = -1 * Math.floor(this.activationMatrices[l-1].rows[k][j] * 10);
           }
-          line.graphics.beginStroke(`rgb(${neg},1,${pos})`);
+          line.graphics.beginStroke("#9999ff");
           let width = 1;
           if (Math.abs(this.weightMatrices[l-1].rows[k][j]) > 1){
             width = Math.abs(this.weightMatrices[l-1].rows[k][j]);
@@ -292,7 +292,7 @@ class Perceptron {
           line.graphics.moveTo(this.synapses[l-1][j][k][0][0], this.synapses[l-1][j][k][0][1]);
           const cmd = line.graphics.lineTo(this.synapses[l-1][j][k][0][0], this.synapses[l-1][j][k][0][1]).command;
           line.graphics.endStroke();
-          createjs.Tween.get(cmd).to({x:this.synapses[l-1][j][k][1][0], y:this.synapses[l-1][j][k][1][1]}, 1400).call(
+          createjs.Tween.get(cmd).to({x:this.synapses[l-1][j][k][1][0], y:this.synapses[l-1][j][k][1][1]}, 800).call(
             this.renderActivations.bind(this,l+1)
           );
           this.stage.addChild(line);

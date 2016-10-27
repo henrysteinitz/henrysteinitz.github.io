@@ -3,7 +3,8 @@ const Perceptron = require('./perceptron.js');
 
 document.addEventListener("DOMContentLoaded", function(){
   const stage = init();
-  stage.autoClear = false;
+  createjs.Ticker.setFPS(70);
+  //stage.autoClear = false;
   let ann = new Perceptron([2,4,1], stage);
   ann.training = false;
   ann.visualizing = false;
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(){
       let batch = generateBatch(3);
       ann.train(batch);
     }
-    stage.clear();
+    //stage.clear();
     stage.update();
 
   });
