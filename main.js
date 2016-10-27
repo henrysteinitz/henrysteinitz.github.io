@@ -3,6 +3,7 @@ const Perceptron = require('./perceptron.js');
 
 document.addEventListener("DOMContentLoaded", function(){
   const stage = init();
+  stage.enableMouseOver(30);  
   createjs.Ticker.setFPS(70);
   //stage.autoClear = false;
   let ann = new Perceptron([2,4,1], stage);

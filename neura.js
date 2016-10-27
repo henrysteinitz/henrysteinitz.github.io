@@ -49,6 +49,7 @@
 
 	document.addEventListener("DOMContentLoaded", function(){
 	  const stage = init();
+	  stage.enableMouseOver(30);  
 	  createjs.Ticker.setFPS(70);
 	  //stage.autoClear = false;
 	  let ann = new Perceptron([2,4,1], stage);
@@ -170,9 +171,6 @@
 	    this.renderNeurons();
 	    this.renderConnections();
 	    this.updateConnections = this.updateConnections.bind(this);
-
-	    this.k = 0;
-
 
 	  }
 
@@ -320,11 +318,6 @@
 	    this.updateConnections();
 	  }
 
-
-	  renderForwardPass(){
-
-	  }
-
 	  updateArchitecture(){
 	    this.updateConnections();
 	  }
@@ -333,6 +326,7 @@
 	    const stage = this.stage;
 	    const radius = this.radius;
 	    const neuronCenters = this.neuronCenters;
+	    const weightMatrices = this.weightMatrices;
 	    this.layers.forEach( function(layer, k){
 	      for (let i = 0; i < layer; i++){
 	        const circle = new createjs.Shape();
@@ -341,6 +335,23 @@
 	        circle.y = neuronCenters[k][i][1];
 	        stage.addChild(circle);
 	        stage.update();
+	        if (k > 0){
+	          circle.on("mouseover", function(e){
+	            console.log('adsfd');
+	            const mag = Math.tanh(weightMatrices[k - 1].rows[i][weightMatrices[k - 1].rows[i].length - 1]);
+	            circle.filters = [new createjs.ColorFilter(
+	              0,0,0,1,
+	              180 - Math.floor(50*mag),
+	              180 - Math.abs(Math.floor(50*mag)),
+	              180 + Math.floor(50*mag), 0) ];
+	            circle.cache(-1*radius, -1*radius, radius*2, radius*2 ,2);
+	          });
+	          circle.on("mouseout", function(e){
+	            circle.filters = [];
+	            circle.cache(-1*radius, -1*radius, radius*2, radius*2 ,2);
+	          });
+	        }
+
 	      }
 	    });
 
@@ -421,14 +432,9 @@
 	      for (let j = 0; j < this.synapses[l - 1].length; j++){
 	        for (let k = 0; k < this.synapses[l - 1][j].length; k++){
 	          const line = new createjs.Shape();
-	          let pos = 0;
-	          let neg = 0;
-	          if (this.activationMatrices[l-1].rows[k][j] > 0){
-	            pos = Math.floor(this.activationMatrices[l-1].rows[k][j] * 10);
-	          } else {
-	            neg = -1 * Math.floor(this.activationMatrices[l-1].rows[k][j] * 10);
-	          }
-	          line.graphics.beginStroke("#9999ff");
+	          const mag = Math.tanh(this.activationMatrices[l-1].rows[k][j]);
+	          const color = `rgb(${180 - Math.floor(50*mag)}, ${180 - Math.abs(Math.floor(50*mag))}, ${180 + Math.floor(50*mag)})`;
+	          line.graphics.beginStroke(color);
 	          let width = 1;
 	          if (Math.abs(this.weightMatrices[l-1].rows[k][j]) > 1){
 	            width = Math.abs(this.weightMatrices[l-1].rows[k][j]);
@@ -454,7 +460,6 @@
 	  }
 
 	  updateConnections(){
-	    this.k += 1;
 	    for (let i = 0; i < this.lines.length; i++){
 	      for (let j = 0; j < this.lines[i].length; j++){
 	        for (let k = 0; k < this.lines[i][j].length; k++){
@@ -474,9 +479,10 @@
 	        }
 	      }
 	    }
-	    //this.stage.removeAllChildren();
 
 	  }
+
+
 	}
 
 
@@ -570,6 +576,18 @@
 	        this.set(i , j, modulus * (2 * Math.random()  - 1));
 	      }
 	    }
+	  }
+
+	  absMax(){
+	    const max = 0;
+	    for (let i = 0; i < this.width; i++){
+	      for (let j = 0; j < this.height; j++){
+	        if (Math.abs(this.rows[j][i]) > max){
+	          max = Math.abs(this.rows[j][i]);
+	        }
+	      }
+	    }
+	    return max;
 	  }
 	}
 
