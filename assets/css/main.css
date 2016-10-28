@@ -77,7 +77,7 @@
 
 	.links{
 		position: absolute;
-		bottom: 10px;
+		bottom: 0px;
 		left: 0;
 		text-decoration: none;
 		color: rgb(160, 160, 160);
