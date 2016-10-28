@@ -8,7 +8,10 @@
 */
 
 /* Reset */
-
+	a{
+		text-decoration: none;
+		color:inherit;
+	}
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
 		padding: 0;
@@ -70,6 +73,29 @@
 		width:35px;
 		-webkit-backface-visibility: hidden;
 		-webkit-transform: translateX(0);
+	}
+
+	.links{
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		text-decoration: none;
+		color: rgb(150, 150, 150);
+		margin-left: 3.06em;
+		font-weight: 300;
+		font-size: 16px;
+	}
+
+	.link-icon{
+		width:18px;
+		opacity: 0.4;
+		margin-bottom: -3px;
+		margin-right: 4px;
+	}
+
+	.linkedin{
+		width:16px;
+		margin-bottom: -2px;
 	}
 
 
