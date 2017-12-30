@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/extra.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -29,7 +30,10 @@
 						<a href="#me" class="active"><span>Home</span>
 							<img class="nav-icon" src="icons/user_filled.png" />
 						</a>
-						<a href="#work" class=""><span>Projects</span>
+						<a href="#math" class=""><span>Math</span>
+							<img class="nav-icon" src="icons/infinity.png" />
+						</a>
+						<a href="#projects" class=""><span>Projects</span>
 							<img class="nav-icon" src="icons/source_code_filled.png" />
 						</a>
 						<a href="#contact" class=""><span>Contact</span>
@@ -49,40 +53,35 @@
 								<p class="links">
 									<a href="cv.pdf"><img class="link-icon" src="icons/resume.png" />CV</a> &nbsp;&nbsp;
 									 &nbsp;&nbsp;&nbsp;&nbsp;
-									<a href="https://www.github.com/henrysteinitz"><img class="link-icon" src="icons/github.png" />Github</a> &nbsp;&nbsp;
+									<a href="https://www.github.com/henrysteinitz"><img class="link-icon" src="icons/github.png" />GitHub</a> &nbsp;&nbsp;
 									 &nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="https://www.linkedin.com/in/henrysteinitz"><img class="link-icon linkedin" src="icons/linkedin.png" />LinkedIn</a>&nbsp;&nbsp;
 									 &nbsp;&nbsp;&nbsp;&nbsp;
-									<a href="https://thghts.io"><img class="link-icon wordpress" src="icons/wordpress.png" />Blog</a></p>
-								<a href="#work" class="jumplink pic">
+									 <a href="https://www.soundcloud.com/with-soul"><img id="sc" class="link-icon" src="icons/soundcloud_copyrighted.png" />SoundCloud</a>&nbsp;&nbsp;
+									 &nbsp;&nbsp;&nbsp;&nbsp;
+									<!--<a href="https://thghts.io"><img class="link-icon wordpress" src="icons/wordpress.png" />Blog</a></p> -->
+									
+								</p>
+								<a href="#math" class="jumplink pic">
 									<span class="arrow icon fa-chevron-right"><span>See my work</span></span>
 									<img src="images/me.jpg" alt="" />
 								</a>
 							</article>
 
-						<!-- Work -->
-							<article id="work" class="panel">
+						<!-- Math -->
+							<article id="math" class="panel">
 								<header>
-									<a href="https://oceanplay.herokuapp.com/"><h2>Oceanplay</h2></a>
+									<h2>Articles</h2>
 								</header>
 								<p>
-									Oceanplay is a minimalist, single-page music streaming and sharing application.
-									It was built using React.js, Redux, and Rails. HTML5 audio element is tied to the
-									global state which allows for modular controls and continuous playback across application pages.
+									<a href="http://www.henrysteinitz.com/steinitz-2013.pdf" class="math-link">
+										Kolmogorov Complexity and Algorithmic Randomness
+									</a> - A survey of topics in algorithmic information theory. We prove that Martin-L&oumlf randomness and 1-randomness are equivalent, and we conclude  by proving that almost-all real numbers are random.
 								</p>
-								<section>
-									<div class="row">
-										<div class="4u 12u$(mobile)">
-											<a href="http://oceanplay.io" class="image fit"><img class="proj-img" src="images/oceanplay_screenshot1.png" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="http://oceanplay.io" class="image fit"><img class="proj-img" src="images/oceanplay_screenshot2.png" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="http://oceanplay.io" class="image fit"><img class="proj-img" src="images/oceanplay_screenshot4.png" alt=""></a>
-										</div>
-									</div>
-								</section>
+							</article>
+
+						<!-- Work -->
+							<article id="projects" class="panel">
 								<header>
 									<a href="http://www.henrysteinitz.com/neura"><h2>Neura</h2></a>
 								</header>
@@ -112,13 +111,26 @@
 									</div>
 								</section>
 								<header>
-									<a href="https://github.com/henrysteinitz/Reset"><h2>Reset.js</h2></a>
+									<a href="https://oceanplay.herokuapp.com/"><h2>Oceanplay</h2></a>
 								</header>
 								<p>
-									Reset.js is a DOM manipulation library that keeps track of each element’s
-									operation history, which powers the provided undo/redo methods for
-									reverting elements back to previous states.
+									Oceanplay is a minimalist, single-page music streaming and sharing application.
+									It was built using React.js, Redux, and Rails. HTML5 audio element is tied to the
+									global state which allows for modular controls and continuous playback across application pages.
 								</p>
+								<section>
+									<div class="row">
+										<div class="4u 12u$(mobile)">
+											<a href="http://oceanplay.io" class="image fit"><img class="proj-img" src="images/oceanplay_screenshot1.png" alt=""></a>
+										</div>
+										<div class="4u 12u$(mobile)">
+											<a href="http://oceanplay.io" class="image fit"><img class="proj-img" src="images/oceanplay_screenshot2.png" alt=""></a>
+										</div>
+										<div class="4u 12u$(mobile)">
+											<a href="http://oceanplay.io" class="image fit"><img class="proj-img" src="images/oceanplay_screenshot4.png" alt=""></a>
+										</div>
+									</div>
+								</section>
 							</article>
 
 						<!-- Contact -->
