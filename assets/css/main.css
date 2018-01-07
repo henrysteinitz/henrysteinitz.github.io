@@ -60,12 +60,12 @@
 		left:0;
 		width: 100%;
 		min-height: 100%;
-		background: white;
+		background: black;
 		z-index: -1;
 	}
 
 	.background-vid video{
-		opacity: 0.95;
+		opacity: 0.65;
 		width: 100%;
 	}
 
